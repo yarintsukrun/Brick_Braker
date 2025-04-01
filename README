@@ -1,0 +1,43 @@
+yarin.tsukrun
+206462160
+
+1. I implemented brick removal using the Strategy Pattern. Each brick is associated with an
+ object that implements a CollisionStrategy interface, defining its behavior upon collision with the ball.
+
+ Advantages of the Strategy Pattern:
+ a.Open/Closed Principle: Adding new collision behaviors is easy without modifying existing code.
+ b.Reusability: The same strategies can be applied to different types of bricks.
+ c.Separation of concerns: Decouples the brick's behavior from the main game logic.
+
+   Disadvantages of the Strategy Pattern:
+ a. Increased number of classes may make the project harder to manage.
+ b. Requires thoughtful upfront design and maintenance of a strategy assignment mechanism.
+
+
+2. Implementation of life display:
+    The life count is implemented using the Model-View-Controller (learned in Intro course) Pattern:
+    Model (HealthManager): Tracks the player's remaining lives.
+    View (HealthCounter, regular GameObject): Display lives both graphically and numerically.
+    Controller(BrickerGameManager): Updates the model and notifies the view of changes.
+
+3. For the PuckBall strategy i crated the PuckBall object:
+   PuckBall: I created an extended class of the regular Ball class because I  wanted to implement
+       new methods for the PuckBall that could not exist in the main Ball class, such as automatic
+       deletion from the game after it exits the screen.
+
+  For the Disk strategy i crated the Disk object:
+  SecondPaddle: For the same reason as in the uckBall class, I created an extended class from the
+    main Paddle class for the second paddle.
+
+  For the Hp Collision strategy used the heart object that i made for the display.
+
+  Other strategy are regular Strategy without new objects.
+
+
+4. Implementation of the double behavior:
+ The double behavior was implemented using the Decorator Pattern, which allows combining two
+ collision strategies.
+ DoubleStrategy: Accepts two strategies and executes both during a collision.
+ Limiting the number of behaviors:
+ A Singleton pattern manages the number of active behaviors globally and ensures the count does not
+ exceed three simultaneously.
